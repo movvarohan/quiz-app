@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <!-- This function is to validate if the user selected an answer before clicking the button -->
+        <script>
+            function validate() {
+                var radios = document.questionForm.q_answer;
+                for (i = 0; i < radios.length; ++ i) {
+                    if (radios [i].checked)
+                        return true;
+                }
+                alert("Please select a value");
+                return false;
+            }
+        </script>
+    <title>Rohan Quiz App</title>
+    <!-- These are the open source css styles that I used -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="local.css" rel="stylesheet">
+          <H2>Rohan Quiz App</H2>
+    </head>
+    <div class="container-fluid bg-info">
+    <div class="modal-dialog">
+        <form name="questionForm" action="/check" onsubmit=" return validate()" method="POST">
+            <input type="hidden" id="correctAnswer" name="correctAnswer" value="{{item.correctanswer}}">
+            <input type="hidden" id="correctOption" name="correctOption" value={{item.correctoption}}>
+            <input type="hidden" id="category" name="category" value={{item.category}}>
+            <input type="hidden" id="level" name="level" value={{item.level}}>
+            <div class="modal-content">
+         <div class="modal-header">
+<!--            <h3><span class="label label-warning" id="qid">2</span>{{category}}</h3>
+            <h3><span class="label label-warning" id="qid">2</span>{{level}}</h3>
+-->
+            <h5>{{item.qn}}</h5>
+        </div>
+
+          <div class="quiz" id="quiz" data-toggle="buttons">
+           <label class="btn-primary btn-block"><input type="radio" id="q_answer" name="q_answer" value="a">{{item.incorrectanswer1}}</label>
+           <label class="btn-primary btn-block"><input type="radio" name="q_answer" value="b">{{item.incorrectanswer2}}</label>
+           <label class="btn-primary btn-block"><input type="radio" name="q_answer" value="c">{{item.incorrectanswer3}}</label>
+           <label class="btn-primary btn-block"><input type="radio" name="q_answer" value="d">{{item.incorrectanswer4}}</label>
+          </div>
+
+          <button id="btnSubmit" class="btn btn-lg btn-primary " type="submit">Submit</button>
+      </div>
+          </form>
+   </div>
+   <div class="modal-footer text-muted">
+    <span id="answer"></span>
+</div>
+</div>
+</html>

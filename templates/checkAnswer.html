@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Rohan Quiz App</title>
+    <!-- These are the open source css styles that I used -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+          <H2>Rohan Quiz App</H2>
+    </head>
+<div class="container-fluid bg-info">
+    <div class="modal-dialog">
+    <body>
+     <div class="modal-content">
+    <form method="POST">
+        <!-- Pass the variables as hidden values to other actions -->
+        <input type="hidden" id="category" name="category" value={{category}}>
+        <input type="hidden" id="level" name="level" value={{level}}>
+        <!-- Display the message and score. -->
+        <h3>{{displayMessage}}</h3>
+        <br>
+        <h3>{{scoreMessage}}</h3>
+        <!-- Display the next button. The form action is mapped to /nextQn
+        The hideNextButton can have 2 values. Block or None.
+        Block will display the button. None will hide the button. -->
+        <button id="btnNext" style="display:{{hideNextButton}}";  class="btn btn-lg btn-primary " type="submit" formaction="/nextQn">Next Question</button>
+        <br>
+        <!-- Restart button that's mapped to /start form action. -->
+        <button id="btnRestart" class="btn btn-lg btn-primary " type="submit" formaction="/start">Restart</button>
+    </form>
+    </div>
+    </body>
+    </div>
+</div>
+</html>
